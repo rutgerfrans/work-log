@@ -1,0 +1,45 @@
+09/06/2024  5   Dev omgeving ingesteld, django django en react runnen.
+12/06/2024	3	Added chatGPT4o_api in the syntethic app. It contains one simple example api request to chatgtp4o with the first bullish headline prompt of the headlines class.
+14/06/2024	2	I Altered main.py to generate text with gpt instead of mistral. I also altered the template prompt to get cleaner generated text. Furthermore I improved the gpt_api.py file, now it can be imported within any other python file and be used the generate text with it.- What is left is just to generate the articles. When this is done I will update the google drive data.
+15/06/2024	0,5	Finished generating the synthetic articles and added these to the Google drive.
+17/06/2024	3	Currently generating new articles based on the “article_formats“. This picture is an example of the similarity between an article without an specificly asked format and the reuters format. I also build in a check such that only new articles are generated when the prompt combined with a article Format does not yet exist.
+18/06/2024	4,5 I created 16 “formats“ to generate different articles on the pre-defined headlines. 13 of them have been generated, around 3300 articles now. I also created a similarity check based on tfidf and cosine similarity. I will finish generating tomorrow, and will create a similarity matrix comparing all the different formats to eachother, to in the end filter bad articles.
+19/06/2024	2	Bugs uit de similarity check en de headlines functie, sommige headlines kwamen twee keer voor of er was een komma vergeten.
+20/06/2024	1	Verdere data cleaning can de tsv en similarity check uitgevoerd.
+25/06/2024	1,5	Last bit of cleaning, dataset is now Complete.
+26/06/2024	3	Getting a understanding of react And django, importing data into Mysql.
+30/06/2024	3	Verder debuggen met het vullen van de news table.
+01/07/2024	2	News table migration finished, Django + react fully working, Merged rutgersbranch to main.Researched faang press releases.
+02/07/2024	2,5	Fixed the script to import the fed Articles into the existing news tableAtleast it is now compatible with linux. Filtered according to the fixed low volatile script.
+03/07/2024	5,5	Added fed articles to news table, Started learning how to change the react front app to accept the low density of the fed articles. also had team meeting.
+04/07/2024	4	Added fed app to django to handle Fed tsv import and table migration to news. Scripts to import tsv and move fed articles from fed table to news table have been made.
+05/07/2024	3	Added all new scraped topics as apps in django including import and migrate scripts. Also altered front end to show articles based on date instead of just db order.
+13/08/2024	5	Nieuwe dataset gedownload en geimport, bug geprobeerd te reproducen. Search balk toegevoegd.
+14/08/2024	2	Debugged the searchbar. Started making the app.tsx more readabe. started of with creating hooks for different components.
+15/08/2024	1,5	Continued cleaning up the reactapp newlist is now seperated into two components and a hook. Now the sentiment is handled completely seperate from everything. app.tsx reduced from 370 lines to 295.
+22/08/2024  0,5	Fixed bug where fed articles would not fetch after switching from daily move.
+04/09/2024	1,5	Meeting with Robert and Koen.
+06/09/2024	2,5	I fixed this item. I added a new condition in fetchNewsAll that includes the text filter. This way all GUI features act as one big AND condition. 1 small problem, the current code on this functionality can be simplified due to duplicate features existing in both app.tsx and useSearchBar.tsx. For now the filter works, we can Refactor the code later on if needed.
+07/09/2024	0,5	Fixing merge conflicts on the searchbar
+10/09/2024	2	Budgetting for llm ticket, fixed the apex chart is not displaying datetime in EST (New York) bug.
+11/09/2024	2	Meeting with Koen and Searched for an alternative on RoBERTa.
+15/09/2024	3	Installed OpenVPN client, connected to the remote server. Cloned git repo, Copied local repo. Played around in the remote server to get a better understanding of the environment. Updated LLMdata.
+16/09/2024	1,75    changed news fields so it handles newly generated synthetic articles. installed and implemented git lfs.
+17/09/2024	1,75	Worked on syntheticly multiplying articles with camiel.
+18/09/2024	2	Worked with Camiel On synthecly multiplying + Meeting with Koen.
+23/09/2024	2	Reorganized django news, multiply articles app and synthetic app. Code is more structured this way. Also tested Olafs multiplied articles import script.
+26/09/2024	2	Implemented Hash function to hash source value of synthetic articles.
+29/09/2024	1	Created Hash script to hash news table in SQL.
+30/09/2024	2	Updates django .save() method to hash any updated entries. Also overwrote bulk_update and bulk_create  so it centrally hashed any new or updated entries.
+01/10/2024	1	Meeting Koen.
+06/10/2024	1	Ticket budgeting with Camiel.
+18/10/2024	3	Refined the pure synthetic tsv dataset and wrote a script to import pure syntethic data to the news table, duplications are handled.
+19/10/2024	2	Did some research on Loss functions. Implemented weighted cross-entropy and implemented a custom cost matrix loss function. Yet to be tested.
+21/10/2024	2,5	Discussed my proposed custom loss function. Did further implementation of the loss function and tested it.
+22/10/2024	2,5	Meeting Koen, added random dates to pure synthetic articles.
+23/10/2024	2,5	Created a quantization script to create a reduced llm model. 32FP to 8-bit integer. Also created an inference script. Validation of the new model yet to be tested. Connection with live thefly stream also yet to be implemented in the inference script.
+24/10/2024	3	Created a validation script for the inference script. Results were very low so I expect something is wrong with quantization. Did research on this matter but yet not any good results.
+25/10/2024	3,5	Inferenceapi implemented to apply inference on the theflystream. Worked together with Camiel and Olaf to fix the inference and quantization.
+28/10/2024	5,5	Worked on the new infrastructrure that receives live articles from the fly, applies inference on it, and writes it to the django db.
+29/10/2024	1,5	Explained new API pipeline to Camiel and Olaf such that they can continue working on this part of the project together with me. Als created the predicting web app which shows in realtime the new predictied stream articles.
+05/11/2024	2	Meeting with Koen. Tried to resolve bug on MacOS with Camiel.
