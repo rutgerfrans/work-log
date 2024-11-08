@@ -1,62 +1,73 @@
 import React, { useState } from 'react';
 import axios from 'axios';
+import { Button, Card, Form, Alert } from "react-bootstrap";
 
-
-const LogForm = () => {
+const WorkForm = () => {
+    const [date, setDate] = useState(new Date().toISOString().split('T')[0]); // Set default date to today
     const [hours, setHours] = useState('');
     const [description, setDescription] = useState('');
-    const [message, setMessage] = useState('');
-
     const handleSubmit = async (e) => {
         e.preventDefault();
-        
-        setMessage('');
-        const currentDate = new Date();
-        const formattedDate = currentDate.toISOString().split('T')[0];
+    
         try {
             await axios.post('http://localhost:8000/api/log/create/', {
-                date: formattedDate,
+                date: date,
                 hours: hours,
                 description: description,
             });
             
-            setMessage('Log entry added successfully!');
             setHours('');
             setDescription('');
+            setDate(new Date().toISOString().split('T')[0]); // Reset date to today
         } catch (error) {
             console.error("There was an error creating the log entry:", error);
-            setMessage('Failed to add log entry.');
         }
     };
 
     return (
-        <div>
-            <h2>Add Log Entry</h2>
-            <form onSubmit={handleSubmit}>
-                <div>
-                    <label>Hours Worked:</label>
-                    <input
+        <Card className="p-4 mb-4">
+            <h3 className="mb-3 text-center">Add Log Entry</h3>
+            <Form onSubmit={handleSubmit}>
+                <Form.Group controlId="formDate" className="mb-2">
+                    <Form.Control
+                        type="date"
+                        value={date}
+                        onChange={(e) => setDate(e.target.value)}
+                        required
+                    />
+                </Form.Group>
+
+                <Form.Group controlId="formHours" className="mb-2">
+                    <Form.Control
                         type="number"
                         value={hours}
                         onChange={(e) => setHours(e.target.value)}
                         step="0.1"
                         min="0"
                         required
+                        placeholder="Enter hours worked"
                     />
-                </div>
-                <div>
-                    <label>Description:</label>
-                    <textarea
+                </Form.Group>
+                
+                <Form.Group controlId="formDescription" className="mb-3">
+                    <Form.Control
+                        as="textarea"
                         value={description}
                         onChange={(e) => setDescription(e.target.value)}
+                        rows={3}
                         required
+                        placeholder="Enter a description of your work"
                     />
+                </Form.Group>
+                
+                <div className="d-flex justify-content-center align-items-center">
+                    <Button variant="primary" type="submit" className="me-2">
+                        Add Log Entry
+                    </Button>
                 </div>
-                <button type="submit">Add Log Entry</button>
-            </form>
-            {message && <p>{message}</p>}
-        </div>
+            </Form>
+        </Card>
     );
 };
 
-export default LogForm;
+export default WorkForm;
