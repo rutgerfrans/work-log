@@ -1,0 +1,103 @@
+# Python cache and compiled files
+*.pyc
+__pycache__/
+
+# Django stuff:
+*.log
+db.sqlite3
+media/
+staticfiles/
+
+# Ignore the virtual environment folder
+env/
+venv/
+
+# IDEs and editor-specific files
+.vscode/
+.idea/
+*.sublime-project
+*.sublime-workspace
+
+# System files
+.DS_Store
+Thumbs.db
+
+# Environment variables
+.env
+
+# PyCharm
+*.idea/
+*.iml
+
+# Byte-compiled / optimized / DLL files
+*.py[cod]
+*$py.class
+
+# C extensions
+*.so
+
+# Packages
+*.egg
+*.egg-info/
+dist/
+build/
+eggs/
+parts/
+var/
+sdist/
+develop-eggs/
+.installed.cfg
+*.egg-info/
+
+# Installer logs
+pip-log.txt
+pip-delete-this-directory.txt
+
+# Celery task queue
+celerybeat-schedule
+
+# SageMath parsed files
+*.sage.py
+
+# Coverage reports
+.coverage
+*.cover
+*.py,cover
+htmlcov/
+
+# mypy
+.mypy_cache/
+
+# SQL dump files
+*.sql
+
+# Django migrations
+**/migrations/*.py
+!**/migrations/__init__.py
+
+# Testing
+.tox/
+.pytest_cache/
+coverage.xml
+nosetests.xml
+test_results/
+junitxml/
+
+# Local Django settings
+local_settings.py
+
+# Gunicorn logs
+gunicorn-error.log
+gunicorn-access.log
+
+# Static and media files
+static/
+media/
+
+# Yarn & npm
+node_modules/
+yarn-error.log
+yarn-debug.log*
+.pnp.cjs
+.pnp.loader.mjs
+
