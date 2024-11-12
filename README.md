@@ -130,6 +130,7 @@ This is a web application for tracking work hours, built with a Django backend a
   - add security to the login system
   - add a logout button
 - Create local server to run this app on.
+- Add config file wiht constants etc.
 
 ## License
 
