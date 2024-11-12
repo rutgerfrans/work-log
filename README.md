@@ -34,12 +34,6 @@ This is a web application for tracking work hours, built with a Django backend a
 
 2. **Backend Setup**
 
-   - Navigate to the `backend` directory:
-
-     ```bash
-     cd backend
-     ```
-
    - Create and activate a virtual environment:
 
      ```bash
@@ -48,17 +42,23 @@ This is a web application for tracking work hours, built with a Django backend a
      ./setup_env.sh
      source ../env/bin/activate
      ```
+   
+   - Navigate to the `backend` directory:
+
+     ```bash
+     cd ../backend
+     ```
 
    - Run migrations:
 
      ```bash
-     python manage.py migrate
+     python3 manage.py migrate
      ```
 
    - Start the Django server:
 
      ```bash
-     python manage.py runserver
+     python3 manage.py runserver
      ```
 
 3. **Frontend Setup**
@@ -66,7 +66,7 @@ This is a web application for tracking work hours, built with a Django backend a
    - Open a new terminal, navigate to the `frontend` directory:
 
      ```bash
-     cd frontend
+     cd ../frontend
      ```
 
    - Install frontend dependencies:

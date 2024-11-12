@@ -17,12 +17,11 @@ Including another URLconf
 
 from django.urls import path, include
 from rest_framework.routers import DefaultRouter
-from log.views import LogViewSet
 
 router = DefaultRouter()
-#router.register(r'log', LogViewSet)
 
 urlpatterns = [
     path('api/', include(router.urls)),
-    path('api/log/', include('log.urls'))
+    path('api/log/', include('log.urls')),
+    path('api/user/', include('user.urls'))
 ]
