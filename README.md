@@ -116,6 +116,16 @@ This is a web application for tracking work hours, built with a Django backend a
 - **Frontend**: React, Chart.js for the bar chart
 - **Database**: SQLite (default, can be changed to another database in Django settings)
 
+## To do
+
+- Refresh log list when adding a new log entry.
+- When refreshing the page the month switches to most recent one, we want to stay at the same month before refreshing.
+- When adding a new log on the same day, the bar chart fucksup. Make sure this gets handled correctly.
+- Adding "generate invoice" button.
+- Refactor log list, mainly gui. Add delete, and edit button
+- Log in system. 
+- Create local server to run this app on.
+
 ## License
 
 This project is licensed under the MIT License.
