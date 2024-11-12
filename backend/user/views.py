@@ -13,15 +13,14 @@ class UserViewSet(viewsets.ModelViewSet):
 
     @action(detail=False, methods=['post'], url_path='register_user')
     def register_user(self, request):
-        log_data = request.data
-        print(log_data)
-        serializer = UserSerializer(data=log_data)
+        serializer = UserSerializer(data=request.data)
         if serializer.is_valid():
-            serializer.save()
-            print("Data is saved to log table.")
-            return Response(serializer.data, status=status.HTTP_201_CREATED)
+            user_instance = serializer.save()  # Save the user instance
+            print("Data is saved to user table:", user_instance)
+            return Response({'success': True, 'data': serializer.data}, status=status.HTTP_201_CREATED)
         else:
-            return Response(serializer.errors, status=status.HTTP_400_BAD_REQUEST)
+            print("Errors:", serializer.errors)  # Log any errors from the serializer
+            return Response({'success': False, 'errors': serializer.errors}, status=status.HTTP_400_BAD_REQUEST)
         
     @action(detail=False, methods=['get'], url_path='login_user')
     def login_user(self, request):

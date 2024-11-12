@@ -123,7 +123,12 @@ This is a web application for tracking work hours, built with a Django backend a
 - When adding a new log on the same day, the bar chart fucksup. Make sure this gets handled correctly.
 - Adding "generate invoice" button.
 - Refactor log list, mainly gui. Add delete, and edit button
-- Log in system. 
+- Login system. 
+  - when you succesfully registered, turn automatically to the loginform
+  - when you are not logged in, fix the side bar to be open instead of closed
+  - make sure only data according to a certain user can be seen
+  - add security to the login system
+  - add a logout button
 - Create local server to run this app on.
 
 ## License
