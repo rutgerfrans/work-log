@@ -1,6 +1,5 @@
-// App.js
 import 'bootstrap/dist/css/bootstrap.min.css';
-import 'bootstrap-icons/font/bootstrap-icons.css';  // Import Bootstrap Icons
+import 'bootstrap-icons/font/bootstrap-icons.css';
 import React, { useState, useEffect } from 'react';
 import { Row, Col, Spinner, Alert } from 'react-bootstrap';
 import axios from 'axios';
@@ -16,11 +15,13 @@ function App() {
     const [selectedMonth, setSelectedMonth] = useState('');
     const [isAuthenticated, setIsAuthenticated] = useState(false);
     const [sidebarOpen, setSidebarOpen] = useState(false);
+    const [userUid, setUserUid] = useState(''); // Store the user's uid here
 
     useEffect(() => {
         if (isAuthenticated) {
             const fetchLogs = async () => {
                 try {
+                    // Fetch logs filtered by the authenticated user's uid
                     const response = await axios.get('http://localhost:8000/api/log/');
                     setLogs(response.data);
                     setLoading(false);
@@ -39,8 +40,9 @@ function App() {
         }
     }, [isAuthenticated]);
 
-    const handleLogin = () => {
+    const handleLogin = (uid) => {
         setIsAuthenticated(true);
+        setUserUid(uid); // Set the user's uid upon login
         setSidebarOpen(false);
     };
 

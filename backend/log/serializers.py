@@ -5,4 +5,4 @@ from .models import log
 class LogSerializer(serializers.ModelSerializer):
     class Meta:
         model = log
-        fields = ['date', 'hours', 'description']
+        fields = ['uid','date', 'hours', 'description']
